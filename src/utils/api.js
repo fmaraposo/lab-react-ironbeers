@@ -13,7 +13,7 @@ class BeersService {
   }
 
   getRandom() {
-    return this.service.get('/random')
+    return this.service.get('/random');
   }
 
   getBeer(id) {
@@ -22,6 +22,10 @@ class BeersService {
 
   addBeer(beer) {
     return this.service.post('/new', beer);
+  }
+
+  searchBeer(query) {
+    return this.service.get(`/search?q=${query}`);
   }
 }
 

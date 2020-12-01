@@ -18,11 +18,25 @@ class ListBeers extends React.Component {
     });
   }
 
+  handleSearchBeer = (event) => {
+    const value = event.target.value;
+    const beersService = new BeersService ();
+    beersService.searchBeer(value)
+    .then((response) => {
+      this.setState({
+        beers: response.data
+      })
+    })
+  }
+
   render() {
     return (
       <div>
         <Navbar />
         <h1>List of Beers</h1>
+        <form>
+          <input onChange={this.handleSearchBeer}></input>
+        </form>
         {this.state.beers.map((beer, index) => {
           return (
             <div key={index} className="containerBeers">
